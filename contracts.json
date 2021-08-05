@@ -1,0 +1,9 @@
+{
+  "outputPath": "./src/contracts",
+  "contracts": {
+    "Token": {
+      "source": "files",
+      "abiFile": "./src/contracts/contracts/Token.sol/Token.json"
+    }
+  }
+}
