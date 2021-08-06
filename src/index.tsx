@@ -2,9 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { StoreProvider } from 'easy-peasy'
 import { Routes } from './components/Routes'
-import { WalletProvider } from './components/WalletProvider'
 import reportWebVitals from './reportWebVitals'
-
 import store from './store'
 
 import './index.css'
@@ -12,9 +10,7 @@ import './index.css'
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider store={store}>
-      <WalletProvider>
         <Routes />
-      </WalletProvider>
     </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
