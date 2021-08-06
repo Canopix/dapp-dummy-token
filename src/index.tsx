@@ -1,12 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { StoreProvider } from 'easy-peasy'
 import { Routes } from './components/Routes'
 import reportWebVitals from './reportWebVitals'
+import store from './store';
+
 import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <StoreProvider store={store}>
+      <Routes />
+    </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
