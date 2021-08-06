@@ -4,19 +4,27 @@ import { Props } from './WalletProvider.types'
 import './WalletProvider.css'
 
 const WalletProvider = (props: Props) => {
-  const { isInjected, chainId } = useStoreState((state) => state.wallet)
+  const ethereum = (window as any).ethereum
+  const { isInjected, chainId, address } = useStoreState(
+    (state) => state.wallet
+  )
   const walletActions = useStoreActions((state) => state.wallet)
   const { children } = props
 
   useEffect(() => {
-    if (typeof (window as any).ethereum !== 'undefined') {
-      (window as any).ethereum.on('chainChanged', () =>
-        walletActions.requestChainId()
-      )
-      walletActions.requestChainId();
+    if (typeof ethereum !== 'undefined') {
+      ethereum.on('chainChanged', () => walletActions.requestChainId())
+      ethereum.on('accountsChanged', (accounts: string) => {
+        walletActions.setAddress(accounts[0])
+      })
+      walletActions.requestChainId()
       walletActions.setIsInjected(true)
     }
-  }, [walletActions])
+  }, [walletActions, ethereum])
+
+  useEffect(() => {
+    walletActions.requestBalance();
+  }, [address, walletActions])
 
   if (!isInjected) {
     return (
