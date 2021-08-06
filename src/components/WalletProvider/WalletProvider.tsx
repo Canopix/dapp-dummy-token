@@ -13,6 +13,7 @@ const WalletProvider = (props: Props) => {
       (window as any).ethereum.on('chainChanged', () =>
         walletActions.requestChainId()
       )
+      walletActions.requestChainId();
       walletActions.setIsInjected(true)
     }
   }, [walletActions])

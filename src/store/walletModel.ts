@@ -22,7 +22,7 @@ const walletModel: WalletModel = {
   isInjected: false,
   balance: 0,
 
-  //Please don't worry about this direct mutation over state, easy-peasy makes
+  //Please don't worry about these direct mutations over state, easy-peasy makes
   //everything inmmutable under the hood. <3
   setAddress: action((state, payload) => {
     Object.assign(state, { address: payload })
