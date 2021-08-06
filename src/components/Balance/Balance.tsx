@@ -1,12 +1,13 @@
 import React from 'react'
-import { useStoreState } from '../../store/index'
+import { useStoreState, useStoreActions } from '../../store/index'
 import { Link } from 'react-router-dom'
-import { Card, Header } from 'decentraland-ui'
+import { Card, Header, Button } from 'decentraland-ui'
 import { shortAddress } from '../../utils/address'
 import './Balance.css'
 
 const Balance = () => {
-  const { address, balance } = useStoreState((state) => state.wallet)
+  const walletActions = useStoreActions((state) => state.wallet)
+  const { address, balance, loading } = useStoreState((state) => state.wallet)
 
   return (
     <div id="balance-container">
@@ -17,8 +18,15 @@ const Balance = () => {
             <strong>Address:</strong> {shortAddress(address)}
           </p>
           <p>
-            <strong>Balance:</strong> {balance} DUMMY <Link to="/transfer">TRANSFER</Link>
+            <strong>Balance:</strong> {balance} DUMMY{' '}
+            <Link to="/transfer">TRANSFER</Link>
           </p>
+          <Button
+            loading={loading}
+            onClick={() => walletActions.requestBalance()}
+          >
+            Balance
+          </Button>
         </Card.Content>
       </Card>
     </div>
