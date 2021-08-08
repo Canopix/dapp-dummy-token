@@ -2,6 +2,11 @@
 import { Action, action, Thunk, thunk } from 'easy-peasy'
 import { ethers } from 'ethers'
 import abi from '../contracts/contracts/Token.sol/Token.json'
+
+type SendCoin = {
+  amount: string
+  address: string
+}
 export interface WalletModel {
   address: string
   chainId: string
@@ -17,6 +22,7 @@ export interface WalletModel {
   requestAccount: Thunk<WalletModel, void>
   requestChainId: Thunk<WalletModel, void>
   requestBalance: Thunk<WalletModel, void>
+  sendCoins: Thunk<WalletModel, SendCoin>
 }
 
 const walletModel: WalletModel = {
@@ -87,6 +93,28 @@ const walletModel: WalletModel = {
       _actions.setLoading(false)
     }
   }),
+  sendCoins: thunk(
+    async (_actions, payload, { getState }) => {
+      const { address, amount } = payload;
+      try {
+        _actions.setLoading(true)
+        debugger;
+        const { contractAddress } = getState()
+        const provider = new ethers.providers.Web3Provider(
+          (window as any).ethereum
+        )
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract(contractAddress, abi, signer)
+        const transaction = await contract.transfer(address, amount)
+        await transaction.wait()
+        console.log(transaction);
+      } catch (error) {
+        console.log(error)
+      } finally {
+        _actions.setLoading(false)
+      }
+    }
+  ),
 }
 
 export default walletModel
