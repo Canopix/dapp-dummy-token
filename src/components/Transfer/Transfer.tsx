@@ -15,7 +15,7 @@ const Transfer = () => {
     walletActions.sendCoins({ amount, address })
   }
   return (
-    <div id="transfer-container" className="center aligned">
+    <div id="transfer-container">
       <Card style={{width: 'fit-content'}}>
         <Card.Content className="transfer-content">
           <Header className="center">Transfer</Header>
@@ -30,7 +30,8 @@ const Transfer = () => {
           />
           <Field
             label="Address"
-            placeholder="0x129344"
+            type="address"
+            placeholder="0x..."
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               setAddress(event.target.value)
             }
