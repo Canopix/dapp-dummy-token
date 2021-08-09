@@ -1,5 +1,7 @@
 /* eslint-disable no-empty-pattern */
 import { Action, action, Thunk, thunk } from 'easy-peasy'
+import { toast } from 'react-toastify'
+import { SUCCESS_MSG, ERROR_TX } from '../utils/toastConfig'
 import { ethers } from 'ethers'
 import abi from '../contracts/contracts/Token.sol/Token.json'
 
@@ -93,27 +95,26 @@ const walletModel: WalletModel = {
       _actions.setLoading(false)
     }
   }),
-  sendCoins: thunk(
-    async (_actions, payload, { getState }) => {
-      const { address, amount } = payload;
-      try {
-        _actions.setLoading(true)
-        const { contractAddress } = getState()
-        const provider = new ethers.providers.Web3Provider(
-          (window as any).ethereum
-        )
-        const signer = provider.getSigner();
-        const contract = new ethers.Contract(contractAddress, abi, signer)
-        const transaction = await contract.transfer(address, amount)
-        await transaction.wait()
-        console.log(transaction);
-      } catch (error) {
-        console.log(error)
-      } finally {
-        _actions.setLoading(false)
-      }
+  sendCoins: thunk(async (_actions, payload, { getState }) => {
+    const { address, amount } = payload
+    try {
+      _actions.setLoading(true)
+      const { contractAddress } = getState()
+      const provider = new ethers.providers.Web3Provider(
+        (window as any).ethereum
+      )
+      const signer = provider.getSigner()
+      const contract = new ethers.Contract(contractAddress, abi, signer)
+      const transaction = await contract.transfer(address, amount)
+      await transaction.wait()
+
+      toast.success(SUCCESS_MSG)
+    } catch (error) {
+      toast.error(ERROR_TX)
+    } finally {
+      _actions.setLoading(false)
     }
-  ),
+  }),
 }
 
 export default walletModel
