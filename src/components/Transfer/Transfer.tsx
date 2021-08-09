@@ -16,7 +16,7 @@ const Transfer = () => {
   }
   return (
     <div id="transfer-container" className="center aligned">
-      <Card>
+      <Card style={{width: 'fit-content'}}>
         <Card.Content className="transfer-content">
           <Header className="center">Transfer</Header>
           <Header className="center" size="small">Send tokens to an account</Header>

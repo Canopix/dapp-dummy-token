@@ -23,7 +23,7 @@ const WalletProvider = (props: Props) => {
   }, [walletActions, ethereum])
 
   useEffect(() => {
-    walletActions.requestBalance();
+    walletActions.requestBalance()
   }, [address, walletActions])
 
   if (!isInjected) {
