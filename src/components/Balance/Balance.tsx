@@ -7,7 +7,6 @@ import './Balance.css'
 
 const Balance = () => {
   const { address, balance } = useStoreState((state) => state.wallet)
-
   return (
     <div id="balance-container">
       <Card centered>
