@@ -18,7 +18,8 @@ const Transfer = () => {
     <div id="transfer-container" className="center aligned">
       <Card>
         <Card.Content className="transfer-content">
-          <Header className="transfer-header">Transfer</Header>
+          <Header className="center">Transfer</Header>
+          <Header className="center" size="small">Send tokens to an account</Header>
           <Field
             label="Amount"
             value={amount}

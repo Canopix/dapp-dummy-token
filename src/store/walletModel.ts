@@ -98,7 +98,6 @@ const walletModel: WalletModel = {
       const { address, amount } = payload;
       try {
         _actions.setLoading(true)
-        debugger;
         const { contractAddress } = getState()
         const provider = new ethers.providers.Web3Provider(
           (window as any).ethereum

@@ -5,10 +5,10 @@
   justify-content: center;
 }
 
-.transfer-content{
-    width: fit-content;
+.transfer-content {
+  width: fit-content;
 }
 
-.transfer-header{
-    text-align: center;
+.center {
+  text-align: center;
 }
