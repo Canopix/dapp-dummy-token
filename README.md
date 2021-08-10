@@ -1,4 +1,4 @@
-# dApp Interview
+# dApp Dummy Token
 
 ### About DUMMY Token
 This application interacts with the DUMMY token deployed on Ropsten.
