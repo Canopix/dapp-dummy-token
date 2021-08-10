@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Component match snapshot 1`] = `
+<StoreProvider
+  store={
+    Object {
+      "@@observable": [Function],
+      "addModel": [Function],
+      "clearMockedActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getListeners": [Function],
+      "getMockedActions": [Function],
+      "getState": [Function],
+      "persist": Object {
+        "clear": [Function],
+        "flush": [Function],
+        "resolveRehydration": [Function],
+      },
+      "reconfigure": [Function],
+      "removeModel": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Balance>
+      <div
+        id="balance-container"
+      >
+        <t
+          centered={true}
+        >
+          <div
+            className="ui centered card"
+            onClick={[Function]}
+          >
+            <Ls>
+              <div
+                className="content"
+              >
+                <_a
+                  size="medium"
+                >
+                  <div
+                    className="ui medium header"
+                  >
+                    Wallet
+                  </div>
+                </_a>
+                <p>
+                  <strong>
+                    Address:
+                  </strong>
+                   
+                  0xc77D...622a
+                </p>
+                <p>
+                  <strong>
+                    Balance:
+                  </strong>
+                   
+                  500
+                   DUMMY
+                   
+                  <Link
+                    to="/transfer"
+                  >
+                    <LinkAnchor
+                      href="/transfer"
+                      navigate={[Function]}
+                    >
+                      <a
+                        href="/transfer"
+                        onClick={[Function]}
+                      >
+                        TRANSFER
+                      </a>
+                    </LinkAnchor>
+                  </Link>
+                </p>
+              </div>
+            </Ls>
+          </div>
+        </t>
+      </div>
+    </Balance>
+  </Router>
+</StoreProvider>
+`;

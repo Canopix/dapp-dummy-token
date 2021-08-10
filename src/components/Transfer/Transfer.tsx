@@ -7,19 +7,20 @@ const Transfer = () => {
   const { loading } = useStoreState((state) => state.wallet)
   const walletActions = useStoreActions((state) => state.wallet)
   const [amount, setAmount] = useState('10')
-  const [address, setAddress] = useState(
-    '0xD1f6e89b0bA1d753C878bB499fE442FF357d2EdF'
-  )
+  const [address, setAddress] = useState('')
 
   const onTransferHandle = () => {
     walletActions.sendCoins({ amount, address })
   }
+  const isDisabled = amount === '' || address === ''
   return (
     <div id="transfer-container">
-      <Card style={{width: 'fit-content'}}>
+      <Card style={{ width: 'fit-content' }}>
         <Card.Content className="transfer-content">
           <Header className="center">Transfer</Header>
-          <Header className="center" size="small">Send tokens to an account</Header>
+          <Header className="center" size="small">
+            Send tokens to an account
+          </Header>
           <Field
             label="Amount"
             value={amount}
@@ -32,11 +33,17 @@ const Transfer = () => {
             label="Address"
             type="address"
             placeholder="0x..."
+            value={address}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               setAddress(event.target.value)
             }
           />
-          <Button primary loading={loading} onClick={onTransferHandle}>
+          <Button
+            primary
+            disabled={isDisabled}
+            loading={loading}
+            onClick={onTransferHandle}
+          >
             Transfer
           </Button>
         </Card.Content>

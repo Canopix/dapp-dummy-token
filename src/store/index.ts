@@ -7,11 +7,11 @@ export interface StoreModel {
 
 const { useStoreActions, useStoreState, useStoreDispatch } = createTypedHooks<StoreModel>();
 
-const model: StoreModel = {
+export const models: StoreModel = {
   wallet: walletModel,
 }
 
 export { useStoreActions, useStoreState, useStoreDispatch };
-export default createStore(model, {
+export default createStore(models, {
   devTools: true,
 })
