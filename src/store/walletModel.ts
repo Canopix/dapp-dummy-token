@@ -33,7 +33,9 @@ const walletModel: WalletModel = {
   loading: false,
   isInjected: false,
   balance: 0,
-  contractAddress: '0xCa498a756ea7f05BBa1958542C2CD8B7C99AFcB3',
+  contractAddress: process.env.REACT_APP_CONTRACT_ADDRESS
+    ? process.env.REACT_APP_CONTRACT_ADDRESS
+    : '0xCa498a756ea7f05BBa1958542C2CD8B7C99AFcB3',
 
   //Please don't worry about these direct mutations over state, easy-peasy makes
   //everything inmmutable under the hood. <3
